@@ -11,9 +11,8 @@ def expansion_key(key):
             word_bytes.append(word_bytes[0])
             word_bytes = word_bytes[1:]
 
-            # # substitiute byte
+            # substitiute byte
             for k in range(len(word_bytes)):
-                # word_bytes[k] = sub_byte(word_bytes[k])
                 x = int(word_bytes[k][0], 16)
                 y = int(word_bytes[k][1], 16)
                 word_bytes[k] = hex(sbox[x][y])[2:].zfill(2)
