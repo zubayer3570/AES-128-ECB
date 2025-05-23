@@ -6,8 +6,9 @@ def expansion_key(key):
     count = 0
     for i in range(4, 44):
         if i % 4 == 0:
-            # 1 byte left shift
             word_bytes = [words[i - 1][j:j + 2] for j in range(0, len(words[i - 1]), 2)]
+            
+            # 1 byte left shift
             word_bytes.append(word_bytes[0])
             word_bytes = word_bytes[1:]
 
