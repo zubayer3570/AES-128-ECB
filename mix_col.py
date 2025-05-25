@@ -1,4 +1,3 @@
-import numpy
 from constants_container import mix_columns_matrix, inv_mix_columns_matrix, dummy
 
 def handle_0x02(num:int):
@@ -37,6 +36,6 @@ def mix_column(state, mix_columns_matrix):
 
                 result ^= temp
             mixed_matrix[i][j] = hex(result)[2:].zfill(2)
-    return numpy.array(mixed_matrix)
+    return mixed_matrix
 
 # print(mix_column(mix_column(dummy, mix_columns_matrix), inv_mix_columns_matrix))

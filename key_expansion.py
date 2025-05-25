@@ -1,4 +1,3 @@
-import numpy
 from constants_container import sbox, RC
 
 def expansion_key(key):
@@ -7,12 +6,12 @@ def expansion_key(key):
     for i in range(4, 44):
         if i % 4 == 0:
             word_bytes = [words[i - 1][j:j + 2] for j in range(0, len(words[i - 1]), 2)]
-            
+
             # 1 byte left shift
             word_bytes.append(word_bytes[0])
             word_bytes = word_bytes[1:]
 
-            # substitiute byte
+            # # substitiute byte
             for k in range(len(word_bytes)):
                 x = int(word_bytes[k][0], 16)
                 y = int(word_bytes[k][1], 16)
@@ -34,8 +33,11 @@ def expansion_key(key):
             words_list[i][j] = [words_list[i][j][k:k+2] for k in range(0, len(words_list[i][j]), 2)]
 
     for i in range(len(words_list)):
-        temp = words_list[i]
-        n_arr = numpy.array(temp)
-        words_list[i] = n_arr.T
+        key_matrix = words_list[i]
+        key_matrix_tmp = [[[None] for j in range(4)] for i in range(4)]
+        for x in range(4):
+            for y in range(4):
+                key_matrix_tmp[y][x] = key_matrix[x][y]
+        words_list[i] = key_matrix_tmp
 
     return words_list
